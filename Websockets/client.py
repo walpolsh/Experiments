@@ -16,7 +16,11 @@ async def recv_msg(websocket):
 async def main():
     uri = "ws://localhost:8765"
     async with websockets.connect(uri) as websocket:
-        await asyncio.gather(await send_msg(websocket), await recv_msg(websocket))
+        tasks = [
+            lambda: send_msg(websocket), 
+            lambda: recv_msg(websocket)
+        ]
+        await asyncio.gather(*(task() for task in tasks))
 
 if __name__ == "__main__":
     print("websocket client initialized")

@@ -2,7 +2,6 @@ import asyncio
 import websockets
 
 connected = set()
-
 async def echo(websocket, path):
     connected.add(websocket)
     try:
