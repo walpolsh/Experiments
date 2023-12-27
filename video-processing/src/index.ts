@@ -7,7 +7,7 @@ app.post("/process-video", (req, res) => {
   const inputVideoPath = req.body.inputVideoPath;
   const outputVideoPath = req.body.outputVideoPath;
   if (!inputVideoPath || !outputVideoPath) {
-    res.status(400).send("Bad Request: Missing File PAth");
+    res.status(400).send("Bad Request: Missing File Path");
   }
 
   Ffmpeg(inputVideoPath)
